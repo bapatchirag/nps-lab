@@ -9,6 +9,12 @@ int main(int argc, char* argv[]) {
     struct sockaddr_in client;
     int socket_created;
 
+    // Check if address provided or not
+    if(argc == 1) {
+        printf("Address missing\n");
+        exit(0);
+    }
+
     // Create client socket
     if((socket_created = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) != -1) {
         printf("Client socket created successfully\n");
