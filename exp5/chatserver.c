@@ -10,10 +10,7 @@ int main() {
     int listenfd, connfd;
 
     // Create socket
-    if((listenfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) != -1) {
-        printf("Server socket creation successful\n");
-    }
-    else {
+    if((listenfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == -1) {
         printf("Server socket creation failed\n");
         exit(0);
     }
@@ -23,39 +20,28 @@ int main() {
     server.sin_addr.s_addr = INADDR_ANY;
     server.sin_port = htons(PORTNUM);
 
-    if(!bind(listenfd, (struct sockaddr*)&server, sizeof(server))) {
-        printf("Server socket bound to port %d\n", PORTNUM);
-    }
-    else {
+    if(bind(listenfd, (struct sockaddr*)&server, sizeof(server))) {
         printf("Server socket bind failed\n");
         exit(0);
     }
 
     // Begin listening on socket
-    if(!listen(listenfd, MAXQUEUE)) {
-        printf("Server socket listening\n");
-    }
-    else {
+    if(listen(listenfd, MAXQUEUE)) {
         printf("Server socket listen failed\n");
+        exit(0);
     }
 
     // Start accepting client requests
     while(1) {
         int server_len = sizeof(server);
-        if((connfd = accept(listenfd, (struct sockaddr*)&server, &server_len)) != -1) {
-            printf("Client connected to server\n");
-        }
-        else {
+        if((connfd = accept(listenfd, (struct sockaddr*)&server, &server_len)) == -1) {
             printf("Client request couldn't be accepted\n");
             exit(0);
         }
 
         // Set up iterative server
         // Close listening socket
-        if(!close(listenfd)) {
-            printf("Listening socket closed\n");
-        }
-        else {
+        if(close(listenfd)) {
             printf("Listening socket close failed\n");
             exit(0);
         }
@@ -64,10 +50,7 @@ int main() {
         chat_with_client(connfd);
 
         // Close connected socket
-        if(!close(connfd)) {
-            printf("Connected socket closed\n");
-        }
-        else {
+        if(close(connfd)) {
             printf("Connected socket close failed\n");
             exit(0);
         }

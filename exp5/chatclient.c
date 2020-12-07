@@ -16,10 +16,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Create client socket
-    if((socket_created = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) != -1) {
-        printf("Client socket created successfully\n");
-    }
-    else {
+    if((socket_created = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == -1) {
         printf("Client socket failed to be created\n");
         exit(0);
     }
@@ -30,10 +27,7 @@ int main(int argc, char* argv[]) {
     inet_pton(AF_INET, argv[1], &client.sin_addr);
 
     // Connect to server
-    if(!connect(socket_created, (struct sockaddr*)&client, sizeof(client))) {
-        printf("Client connected to server\n");
-    }
-    else {
+    if(connect(socket_created, (struct sockaddr*)&client, sizeof(client))) {
         printf("Couldn't connect to server\n");
         exit(0);
     }
@@ -42,14 +36,11 @@ int main(int argc, char* argv[]) {
     printf("-------------------------------------------------\n");
     chat_with_server(socket_created);
     
-    if(!close(socket_created)) {
-        printf("Connection closed successfully\n");
-    }
-    else {
+    if(close(socket_created)) {
         printf("Connection couldn't be closed\n");
         exit(0);
     }
-
+    
     return 0;
 }
 
