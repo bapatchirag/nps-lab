@@ -1,5 +1,5 @@
 <!-- omit in toc -->
-# Experiment 5
+# Experiment 2
 Write a program to implement distance vector routing protocol for a simple topology of routers.
 
 <!-- omit in toc -->
