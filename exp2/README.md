@@ -24,7 +24,7 @@ make all
 ```
 
 ## Start processes
-- Server
+- Execute
 ```bash
 ./bf
 ```
