@@ -7,3 +7,4 @@ All folders have the code and the documentation for the respective programs for 
 - *Experiment 2*: Implement distance vector routing protocol for a simple topology of routers.
 - *Experiment 5*: Implement iterative chat server that allows a client to chat with the server.
 - *Experiment 6*: Implementation of concurrent and iterative echo server using both connection and connectionless socket system calls
+- *Experiment 7*: Implementation of remote command execution using socket system calls.
