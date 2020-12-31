@@ -1,5 +1,5 @@
 <!-- omit in toc -->
-# Experiment 2
+# Experiment 3
 Write a program to implement error detection and Correction concept using Checksum and Hamming code.
 
 <!-- omit in toc -->
