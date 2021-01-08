@@ -12,7 +12,7 @@ long int getkeys(int*);
 long int fastmod(long, long);
 
 int main() {
-    int encrypt_key, decrypt_key;
+    unsigned int encrypt_key, decrypt_key;
     encrypt_key = getkeys(&decrypt_key);
 
     printf("Encrypt key: %d\n", encrypt_key);
