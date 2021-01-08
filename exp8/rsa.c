@@ -64,12 +64,11 @@ int gcd(int n1, int n2, int* inv_n1, int* inv_n2)
 long int getkeys(int* d_key) {
     // Seed and get random number as encrypt key
     srandom(time(0));
-    int e_key = random(), is_prime, count = 0;
+    int e_key = random(), is_prime;
     int* useless;
 
     // Generate encrypt key and corresponding decrypt key
     while((is_prime = gcd(e_key, PHI, d_key, useless)) > 1) {
-        printf("Entered %d\n", (++count));
         e_key /= is_prime;
     }
 
