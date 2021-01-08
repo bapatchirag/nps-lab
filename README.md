@@ -9,3 +9,4 @@ All folders have the code and the documentation for the respective programs for 
 - *Experiment 5*: Implement iterative chat server that allows a client to chat with the server.
 - *Experiment 6*: Implementation of concurrent and iterative echo server using both connection and connectionless socket system calls
 - *Experiment 7*: Implementation of remote command execution using socket system calls.
+- *Experiment 8*: Encrypt and decrypt the data using RSA and exchange the key securely using Diffie-Hellman Key exchange protocol.
